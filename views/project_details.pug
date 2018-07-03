@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  h2= project.acronym
+
+  ul
+    li <strong>start date: </strong>#{project.startDate} <strong>end date: </strong>#{project.endDate}
+    li <strong>title:</strong> #{project.title}
+    li <strong>budget:</strong> #{project.totalCost} / #{project.ecMaxContribution}
+    li <strong>coordinator:</strong> #{project.coordinator}
+    li <strong>objective:</strong> #{project.objective}
+    li <strong>partners:</strong>
+    ul
+      each partner in project.organizations
+        li <strong>type: </strong>#{partner.activityType} <strong>ec budget: </strong>#{partner.ecContribution} <strong>url: </strong>
+           a(href='https://'+partner.organizationUrl) #{partner.name}
+

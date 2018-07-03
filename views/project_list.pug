@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  h2= query
+
+  ul
+  each project in project_list
+    - detailurl = "/projects/details/" + project.rcn
+    li
+      a(href= detailurl ) #{project.startDate} #{project.endDate}
+      | <strong> #{project.acronym} </strong>   #{project.title} <strong>#{project.ecMaxContribution}</strong>
+
+  else
+    li There are no projects for '#{query}'!
