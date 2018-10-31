@@ -2,4 +2,16 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  form(method='POST' action='/')
+
+      div.form-group
+          label(for='countries') Country:
+          select#countries.form-control(type='select', placeholder='Select country' name='country' required='true' )
+              for country in countries
+                option(value=country.code) #{country.name}
+
+      div.form-group
+          label(for='keywords') Keywords:
+          input#keywords.form-control(type='text', placeholder='Keywords to search for' name='keywords' required='true' )
+
+      button.btn.btn-primary(type='submit') Submit
