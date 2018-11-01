@@ -7,12 +7,13 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
-    "cordis-parser": "^0.4.0",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "promise": "^8.0.1",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "csvtojson": "^1.0.3",
+    "request": "^2.78.0"
   }
 }
