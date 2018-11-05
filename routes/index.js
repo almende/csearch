@@ -278,13 +278,16 @@ router.post('/', function(req, res, next) {
 
     global.projectsBuilt.then( function(list) {
         if (query && query.trim().length) {
+            console.log('met query');
             sublist = projectController.project_list(query, list);
         } else {
+            console.log('zonder query');
             sublist = list;
         }
 
+        console.log('number of projects to consider '+sublist.length);
         contributions = projectController.contributions_by_country(country, sublist);
-        res.render('index', {title: 'Contributions', contributions: sublist, countryid: country});
+        res.render('country', {title: 'Contributions', contributions: contributions, countryid: country});
     });
 
 });

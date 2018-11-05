@@ -69,7 +69,7 @@ module.exports = {
         result[key] = [];
       }
       result[key].push(resultRow);
-      process.stdout.write(".");
+      //process.stdout.write(".");
     });
 
     //https://cordis.europa.eu/data/cordis-h2020organizations.csv

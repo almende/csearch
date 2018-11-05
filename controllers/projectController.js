@@ -28,23 +28,31 @@ exports.project_details = function(rcn, list){
 
 // get a list of contributors from one country with a reference to a project
 exports.contributions_by_country= function(countryid, list){
-    console.log('country: '+countryid);
-    let contributions = {};
+    console.log('country: '+countryid+' in '+list.length+' projects');
+    let contributions = new Array();
     list.forEach(function(project, index){
         project.organizations.forEach(function(org, index){
+
             if(org.country.toUpperCase() === countryid.toUpperCase()){
-                contributions.add({org: org, project: project});
+                console.log('name: '+org.name+' in project '+project.title);
+                contributions[contributions.length] = {org: org, project: project};
+                console.log('added at place '+contributions.length);
             }
         });
     });
+
+    console.log('added '+contributions.length+' contributions, now sorting');
+
     return contributions.sort(function(contributionA, contributionB){
         let result = contributionA.org.name.localeCompare(contributionB.org.name);
         if(!result){
             // the it is the same organization, sort on project name
-            return contributionA.project.name.localeCompare(contributionB.project.name);
+            return contributionA.project.title.localeCompare(contributionB.project.title);
         }
         return result;
     })
+
+    console.log('returning to caller');
     // At this point a list of organizations has been created from the indicated country with a bunch of projects
     return contributions;
 }
