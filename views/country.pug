@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  h2= query
+
+  ul
+  each contribution in contributions
+    - detailurl = "/projects/details/" + contribution.project.rcn
+    li
+      a(href= detailurl ) #{contribution.project.startDate} #{contribution.project.endDate}
+      | <strong> #{contribution.org.name} </strong> ,<strong> #{contribution.project.acronym} </strong> ,#{contribution.project.title} <strong>totaal budget: #{contribution.project.ecMaxContribution}</strong>
+
+  else
+    li There are no projects for '#{query}'!
